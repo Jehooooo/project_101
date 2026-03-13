@@ -1,0 +1,53 @@
+# QA Testing & Feedback Log
+Tester Name: Trisha Dacumos
+Date: March 14, 2026
+
+--------------------------------------------------
+## 1. Testing Session Log
+Record the areas of the system you tested, what actions you performed, and your general observations.
+
+* Time/Duration: 
+* Area Tested: 
+* Actions Performed: 
+* Observations: 
+
+(Copy and paste the above block for multiple sessions)
+
+--------------------------------------------------
+## 2. Bug Reports
+Identify any bugs, errors, or unexpected behaviors you encountered.
+
+Bug #1
+* Description: 
+* Steps to reproduce:
+    1. 
+    2. 
+    3. 
+* Expected result: 
+* Actual result: 
+* Severity (Low/Medium/High/Critical): 
+
+Bug #2
+* Description: 
+* Steps to reproduce:
+    1. 
+    2. 
+    3. 
+* Expected result: 
+* Actual result: 
+* Severity (Low/Medium/High/Critical): 
+
+(Copy and paste the above block for more bugs)
+
+--------------------------------------------------
+## 3. System Recommendations & Feedback
+Provide your thoughts and suggestions for improving the system.(Do not leave this without any recommendations)
+
+* UI/UX Improvements (What could look or feel better?):
+  - 
+
+* Feature Requests (What is missing that would be useful?):
+  - 
+
+* General Feedback (Any other thoughts on performance, usability, etc.):
+  - 
