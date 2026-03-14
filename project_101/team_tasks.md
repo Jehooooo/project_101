@@ -15,6 +15,7 @@
 ### 👑 LAURICE — Team Leader
 
 **Role:** Documentation & Media Team Manager
+**🗓️ Deadline: March 21, 2026**
 
 **Responsibilities:**
 - Oversee and coordinate all tasks assigned to the Documentation/Media team
@@ -34,6 +35,7 @@
 ### 🟩 CHRISTIAN — User Manual Writer
 
 **Role:** End-User Manual Documentation
+**🗓️ Deadline: March 19, 2026**
 
 **Task:** Write the **User Manual** for the system — a step-by-step guide that teaches users (staff and admins) how to use the system, written in simple Filipino or English.
 
@@ -64,6 +66,7 @@
 ### 🟩 JUSTIN — Screenshot & Visual Documentation Specialist
 
 **Role:** Visual Documentation
+**🗓️ Deadline: March 17, 2026**
 
 **Task:** Capture and organize **all screenshots** of the system's pages and features for use in the final documentation, presentation, and README.
 
@@ -94,6 +97,7 @@
 ### 🟩 CRISTELLE — Presentation Maker (PowerPoint)
 
 **Role:** Project Presentation Designer
+**🗓️ Deadline: March 20, 2026**
 
 **Task:** Create the **project presentation (PowerPoint or Google Slides)** — a visually clean and professional slide deck that explains what the system is and what it does.
 
@@ -126,6 +130,7 @@ Prepare slides covering the following topics (one section per slide or two):
 ### 🟩 SHEILA — Project Narrative / Write-Up Author
 
 **Role:** Narrative Documentation Writer
+**🗓️ Deadline: March 19, 2026**
 
 **Task:** Write the **Project Narrative** — a formal written description of the project, like a short essay/report about what the project is, why it was made, and what it accomplished.
 
@@ -164,6 +169,7 @@ Write a 2–4 page document that includes the following sections:
 ### 🟩 JEZEBELE — Quality Checker / Proofreader
 
 **Role:** Documentation Quality Assurance
+**🗓️ Deadline: March 21, 2026**
 
 **Task:** Review and proofread ALL documents produced by the team before they are submitted. You are the last checkpoint before anything is handed to the Lead Developer.
 
@@ -193,6 +199,7 @@ Write a 2–4 page document that includes the following sections:
 ### 🟨 JUSTINE JADE — Runner & General Assistant
 
 **Role:** General Support & Runner
+**🗓️ Deadline: On-call throughout March 17–21, 2026**
 
 **Task:** Provide flexible support to any team member who needs help, especially with gathering information, coordinating, and running errands.
 
@@ -214,6 +221,7 @@ Write a 2–4 page document that includes the following sections:
 ### 🟨 JOHN LAGAO — Logistics & Support Coordinator
 
 **Role:** Logistics & Coordination Support
+**🗓️ Deadline: March 21, 2026**
 
 **Task:** Handle the **coordination and logistics** side of the team — making sure people have what they need to do their work.
 
@@ -237,16 +245,16 @@ Write a 2–4 page document that includes the following sections:
 
 ## 📊 Task Summary Table
 
-| Member | Role | Main Output |
-|--------|------|-------------|
-| **Laurice** | Team Leader | Progress tracker, final compiled folder |
-| **Christian** | User Manual Writer | Step-by-step user guide with screenshots |
-| **Justin** | Screenshot | Labeled screenshot folder + index list |
-| **Cristelle** | Presentation Maker | PowerPoint / Google Slides (12+ slides) |
-| **Sheila** | Narrative Writer | Formal project write-up (2–4 pages) |
-| **Jezebele** | Proofreader / QA | Reviewed & approved documents |
-| **Justine Jade** | General Assistant | Support tasks as assigned by Laurice |
-| **John Lagao** | Logistics Coordinator | Organized shared output folder |
+| Member | Role | Main Output | 🗓️ Deadline |
+|--------|------|-------------|-------------|
+| **Laurice** | Team Leader | Progress tracker, final compiled folder | March 21, 2026 |
+| **Christian** | User Manual Writer | Step-by-step user guide with screenshots | March 19, 2026 |
+| **Justin** | Screenshot | Labeled screenshot folder + index list | March 17, 2026 |
+| **Cristelle** | Presentation Maker | PowerPoint / Google Slides (12+ slides) | March 20, 2026 |
+| **Sheila** | Narrative Writer | Formal project write-up (2–4 pages) | March 19, 2026 |
+| **Jezebele** | Proofreader / QA | Reviewed & approved documents | March 21, 2026 |
+| **Justine Jade** | General Assistant | Support tasks as assigned by Laurice | March 17–21 (on-call) |
+| **John Lagao** | Logistics Coordinator | Organized shared output folder | March 21, 2026 |
 
 ---
 
@@ -255,7 +263,7 @@ Write a 2–4 page document that includes the following sections:
 > - **No coding is required** for any of these tasks.
 > - If you are unsure about anything regarding the system, **ask the Lead Developer (Jeho)** through Laurice or John Lagao.
 > - All outputs must be submitted to **Laurice** who will compile and forward to the Lead Developer.
-> - **Deadline:** To be set by Laurice in coordination with the Lead Developer.
+> - **All deadlines start from March 17, 2026. Submit your output on or before your assigned deadline.**
 
 ---
 
