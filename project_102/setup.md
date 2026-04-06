@@ -431,6 +431,7 @@ After running `mysql_setup.py`, the following accounts are seeded into the datab
 - Check that CORS is not blocking requests — the backend uses `flask-cors`.
 - Confirm the API base URL in the frontend source matches `http://127.0.0.1:5000`.
 
+
 ---
 
 *Last updated: April 2026*
