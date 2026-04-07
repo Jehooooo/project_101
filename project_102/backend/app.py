@@ -27,7 +27,7 @@ from flask_jwt_extended import (
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 
-from models.database import db, init_db, get_database_uri
+from models.database import db, init_db, get_database_uri, get_engine_options
 from models.user import User
 from models.incident import Incident
 from utils.pdf_generator import generate_incident_pdf, generate_full_report_pdf
@@ -49,11 +49,8 @@ app.config["SQLALCHEMY_DATABASE_URI"]     = get_database_uri()
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["UPLOAD_FOLDER"]              = "static/uploads"
 app.config["REPORT_FOLDER"]              = "static/reports"
-# MySQL: raise max allowed packet to 64 MB for LONGBLOB uploads
-app.config["SQLALCHEMY_ENGINE_OPTIONS"]  = {
-    "pool_pre_ping": True,
-    "pool_recycle":  3600,
-}
+# Engine options — includes SSL for Aiven, pooling for all environments
+app.config["SQLALCHEMY_ENGINE_OPTIONS"]  = get_engine_options()
 
 # Ensure static directories exist (legacy PDF support)
 os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)

@@ -2,7 +2,7 @@
 Database configuration and initialization
 DMMMSU-SLUC Disaster/Emergency Incident Report Monitoring System
 
-Supports MySQL (via PyMySQL) with SQLite fallback for local dev.
+Supports MySQL (via PyMySQL) with SSL for Aiven cloud hosting.
 Connection parameters are read from environment variables / .env file.
 """
 
@@ -19,7 +19,7 @@ def get_database_uri() -> str:
     db_port = os.environ.get("DB_PORT", "3307")
     db_user = os.environ.get("DB_USER", "root")
     db_pass = os.environ.get("DB_PASSWORD", "")
-    db_name = os.environ.get("DB_NAME", "campus_incidents_db")
+    db_name = os.environ.get("DB_NAME", "defaultdb")
 
     # If DATABASE_URL is explicitly set (e.g. on a cloud host), use it directly
     explicit_url = os.environ.get("DATABASE_URL")
@@ -31,6 +31,24 @@ def get_database_uri() -> str:
         f"mysql+pymysql://{db_user}:{db_pass}@{db_host}:{db_port}"
         f"/{db_name}?charset=utf8mb4"
     )
+
+
+def get_engine_options() -> dict:
+    """
+    Return SQLAlchemy engine options.
+    Aiven MySQL requires SSL — detected automatically by the hostname.
+    """
+    db_host = os.environ.get("DB_HOST", "")
+    options = {
+        "pool_pre_ping": True,
+        "pool_recycle":  3600,
+    }
+
+    # Aiven hostnames always contain 'aivencloud.com' — SSL is required
+    if "aivencloud.com" in db_host:
+        options["connect_args"] = {"ssl": {"ssl_mode": "REQUIRED"}}
+
+    return options
 
 
 def init_db():
