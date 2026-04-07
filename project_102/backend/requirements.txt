@@ -11,3 +11,5 @@ pillow>=10.2.0
 PyMySQL==1.1.1
 cryptography==42.0.5
 mysql-connector-python==8.3.0
+requests>=2.31.0
+gunicorn>=21.2.0

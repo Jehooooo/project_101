@@ -5,8 +5,11 @@ Backend API - Flask Application (MySQL edition)
 
 import io
 import json
+import logging
 import os
 from datetime import datetime, timedelta
+
+logger = logging.getLogger(__name__)
 
 from dotenv import load_dotenv
 
@@ -28,7 +31,11 @@ from models.database import db, init_db, get_database_uri
 from models.user import User
 from models.incident import Incident
 from utils.pdf_generator import generate_incident_pdf, generate_full_report_pdf
-from utils.notifications import send_email_notification, send_sms_notification
+from utils.notifications import (
+    send_email_notification,
+    send_sms_notification,
+    send_test_notification,
+)
 
 # ======================================================================
 # Flask app configuration
@@ -56,7 +63,13 @@ os.makedirs(app.config["REPORT_FOLDER"], exist_ok=True)
 # Extension initialisation
 # ======================================================================
 
-CORS(app)
+# Allow both local dev and the production Vercel frontend
+_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    os.environ.get("FRONTEND_URL", "https://dmmmsu-incident-system.vercel.app"),
+]
+CORS(app, resources={r"/api/*": {"origins": _ALLOWED_ORIGINS}})
 JWTManager(app)
 db.init_app(app)
 
@@ -437,11 +450,12 @@ def create_incident():
     incident.pdf_file = pdf_path
     db.session.commit()
 
+    # ── Notify all staff/admin ────────────────────────────────────────
     try:
-        send_email_notification(incident)
-        send_sms_notification(incident)
+        send_email_notification(incident, status_update=False)
+        send_sms_notification(incident, status_update=False)
     except Exception as exc:
-        print(f"Notification error: {exc}")
+        logger.error("Notification error after incident creation: %s", exc)
 
     return jsonify({
         "message":  "Incident reported successfully",
@@ -474,10 +488,12 @@ def update_incident_status(incident_id):
     incident.updated_at = datetime.utcnow()
     db.session.commit()
 
+    # ── Notify all staff/admin of status change ───────────────────────
     try:
         send_email_notification(incident, status_update=True)
+        send_sms_notification(incident, status_update=True)
     except Exception as exc:
-        print(f"Notification error: {exc}")
+        logger.error("Notification error after status update: %s", exc)
 
     return jsonify({
         "message":  "Status updated successfully",
@@ -653,6 +669,43 @@ def generate_full_report():
 
 
 # ======================================================================
+# NOTIFICATION TEST ROUTE
+# ======================================================================
+
+@app.route("/api/test/notifications", methods=["POST"])
+@jwt_required()
+def test_notifications():
+    """Admin-only endpoint: send a test email + Telegram to verify config."""
+    guard = require_role("admin")
+    if guard:
+        return guard
+
+    data     = request.get_json(silent=True) or {}
+    to_email = data.get("email")  # optional: test a specific address
+
+    results = send_test_notification(to_email=to_email)
+
+    status_code = 200 if (results["email_ok"] or results["telegram_ok"]) else 500
+    return jsonify({
+        "message":       "Test completed" if status_code == 200 else "Test failed — check server logs",
+        "email_ok":      results["email_ok"],
+        "telegram_ok":   results["telegram_ok"],
+        "recipients":    results["recipients"],
+        "errors":        results["errors"],
+    }), status_code
+
+
+# ======================================================================
+# HEALTH CHECK  (used by cron-job.org to keep Render free tier awake)
+# ======================================================================
+
+@app.route("/api/health", methods=["GET"])
+def health_check():
+    """Lightweight liveness probe — no auth required."""
+    return jsonify({"status": "ok"}), 200
+
+
+# ======================================================================
 # NOTIFICATIONS ROUTE
 # ======================================================================
 
@@ -700,4 +753,6 @@ def internal_error(error):
 # ======================================================================
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    debug = os.environ.get("FLASK_ENV", "production") == "development"
+    app.run(debug=debug, host="0.0.0.0", port=port)

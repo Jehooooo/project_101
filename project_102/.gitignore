@@ -1,1 +1,27 @@
+# Dependencies
 node_modules/
+
+# Environment secrets — NEVER commit these
+.env
+backend/.env
+
+# Keep the example file (no real secrets)
+!.env.example
+!backend/.env.example
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+backend/instance/
+
+# Frontend build output
+app/dist/
+
+# Generated reports & uploads (stored in DB / Aiven)
+backend/static/reports/
+backend/static/uploads/
+
+# OS files
+.DS_Store
+Thumbs.db
